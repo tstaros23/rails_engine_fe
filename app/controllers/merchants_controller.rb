@@ -7,5 +7,6 @@ class MerchantsController < ApplicationController
     @merchant = MerchantFacade.create_merchants.find do |merchant|
       merchant.merchant_id == params[:merchant_id]
     end
+    @items = MerchantFacade.create_merchant_items
   end
 end

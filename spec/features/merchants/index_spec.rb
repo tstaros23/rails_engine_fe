@@ -9,10 +9,12 @@ require 'rails_helper'
      expect(page).to have_content("Merchants")
 
      merchants.each do |merchant|
-      expect(page).to have_content(merchant.name)
-      click_on(merchant.name)
-      expect(current_path).to eq("/merchants/#{merchant.merchant_id}")
-      visit '/merchants'
+      within("#merchants-#{merchant.merchant_id}") do
+        expect(page).to have_content(merchant.name)
+        click_on(merchant.name)
+        expect(current_path).to eq("/merchants/#{merchant.merchant_id}")
+        visit '/merchants'
+      end
      end
    end
  end
