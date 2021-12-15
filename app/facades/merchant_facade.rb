@@ -7,10 +7,10 @@ class MerchantFacade
     end
   end
 
-  def self.create_merchant_items
-    json = MerchantService.merchant_show
-    
-    json[0][:data].map do |data|
+  def self.create_merchant_items(merchant_id)
+    json = MerchantService.merchant_show(merchant_id)
+
+    json[:data].map do |data|
       Item.new(data)
     end
   end

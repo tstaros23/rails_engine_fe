@@ -3,13 +3,8 @@ class MerchantService
     merchants = get_data("merchants")
   end
 
-  def self.merchant_show
-    merchant_items = []
-    merchants = MerchantFacade.create_merchants
-     merchants.each do |merchant|
-      merchant_items << get_data("merchants/#{merchant.merchant_id}/items")
-    end
-    merchant_items
+  def self.merchant_show(merchant_id)
+      merchant_items = get_data("merchants/#{merchant_id}/items")
   end
   private
   def self.get_data(endpoint)

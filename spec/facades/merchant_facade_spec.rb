@@ -11,7 +11,8 @@ require 'rails_helper'
      end
 
      it "can create instances of items", :vcr do
-       items = MerchantFacade.create_merchant_items
+        merchant = MerchantFacade.create_merchants.first
+       items = MerchantFacade.create_merchant_items(merchant.merchant_id)
 
        items.each do |item|
          expect(item).to be_an_instance_of(Item)
